@@ -1,34 +1,56 @@
 'use client'
 
 import { TrendingUp, Users, Package, DollarSign } from 'lucide-react'
+import { useEffect, useState } from 'react'
+
+interface StatsData {
+  totalSkins: string
+  totalVolume: string
+  avgGains: string
+  activeTraders: string
+}
 
 export default function Stats() {
+  const [statsData, setStatsData] = useState<StatsData>({
+    totalSkins: '0',
+    totalVolume: '0',
+    avgGains: '0%',
+    activeTraders: '0'
+  })
+  
+  useEffect(() => {
+    fetch('/api/stats')
+      .then(res => res.json())
+      .then(data => setStatsData(data))
+      .catch(console.error)
+  }, [])
+  
   const stats = [
     {
       icon: TrendingUp,
-      value: '+24.7%',
-      label: 'Avg. Trending Change',
-      change: 'Last 24h',
+      value: statsData.avgGains,
+      label: 'Avg. Price Change',
+      change: 'Last 30d',
       positive: true,
     },
     {
       icon: Package,
-      value: '1,247',
-      label: 'Investment Signals',
-      change: 'Today',
+      value: statsData.totalSkins,
+      label: 'Tracked Skins',
+      change: 'Database',
       positive: true,
     },
     {
       icon: DollarSign,
-      value: '$8.2M',
-      label: 'Price Movement',
-      change: '+18.3%',
+      value: statsData.totalVolume,
+      label: 'Price Data Points',
+      change: 'Historical',
       positive: true,
     },
     {
       icon: Users,
-      value: '12.4K',
-      label: 'Active Trackers',
+      value: statsData.activeTraders,
+      label: 'Active Traders',
       change: '+5.7%',
       positive: true,
     },
