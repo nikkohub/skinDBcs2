@@ -1,21 +1,21 @@
 'use client'
 
-import { TrendingUp, Users, Package, DollarSign } from 'lucide-react'
+import { TrendingUp, Package, DollarSign, BarChart3 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 interface StatsData {
   totalSkins: string
+  priceDataPoints: string
+  avgPriceChange: string
   totalVolume: string
-  avgGains: string
-  activeTraders: string
 }
 
 export default function Stats() {
   const [statsData, setStatsData] = useState<StatsData>({
     totalSkins: '0',
-    totalVolume: '0',
-    avgGains: '0%',
-    activeTraders: '0'
+    priceDataPoints: '0',
+    avgPriceChange: '0%',
+    totalVolume: '0'
   })
   
   useEffect(() => {
@@ -28,31 +28,27 @@ export default function Stats() {
   const stats = [
     {
       icon: TrendingUp,
-      value: statsData.avgGains,
+      value: statsData.avgPriceChange,
       label: 'Avg. Price Change',
-      change: 'Last 30d',
-      positive: true,
+      sublabel: '30 day average',
     },
     {
       icon: Package,
       value: statsData.totalSkins,
       label: 'Tracked Skins',
-      change: 'Database',
-      positive: true,
+      sublabel: 'In database',
+    },
+    {
+      icon: BarChart3,
+      value: statsData.priceDataPoints,
+      label: 'Price Records',
+      sublabel: 'Historical data',
     },
     {
       icon: DollarSign,
       value: statsData.totalVolume,
-      label: 'Price Data Points',
-      change: 'Historical',
-      positive: true,
-    },
-    {
-      icon: Users,
-      value: statsData.activeTraders,
-      label: 'Active Traders',
-      change: '+5.7%',
-      positive: true,
+      label: 'Market Volume',
+      sublabel: 'Total listings',
     },
   ]
 
@@ -72,7 +68,7 @@ export default function Stats() {
                     <Icon className="w-6 h-6 text-white" />
                   </div>
                   <span className="text-xs font-semibold px-3 py-1 rounded-full bg-white/5 text-gray-400 border border-white/10">
-                    {stat.change}
+                    {stat.sublabel}
                   </span>
                 </div>
                 <div className="text-3xl font-black mb-2 text-white">{stat.value}</div>

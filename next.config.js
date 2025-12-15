@@ -5,7 +5,9 @@ const nextConfig = {
     domains: [
       'steamcommunity-a.akamaihd.net',
       'community.cloudflare.steamstatic.com',
+      'community.steamstatic.com',
       'cdn.csgofloat.com',
+      'images.unsplash.com',
     ],
   },
 }

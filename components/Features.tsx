@@ -1,38 +1,28 @@
 'use client'
 
-import { BarChart3, Shield, Zap, Eye, TrendingUp, Lock } from 'lucide-react'
+import { BarChart3, Search, TrendingUp, ExternalLink } from 'lucide-react'
 
 export default function Features() {
   const features = [
     {
+      icon: Search,
+      title: 'Instant Search',
+      description: 'Search any CS2 skin and get real-time prices directly from the Steam Community Market.',
+    },
+    {
       icon: TrendingUp,
       title: 'Price Tracking',
-      description: 'Real-time price monitoring with historical data. Track every price movement across thousands of skins.',
+      description: 'Monitor price changes over time. See which skins are rising or falling in value.',
     },
     {
       icon: BarChart3,
-      title: 'Smart Analytics',
-      description: 'Advanced charts and insights. Identify patterns and trends before the market reacts.',
+      title: 'Price History',
+      description: 'View historical price charts to understand market trends before buying or selling.',
     },
     {
-      icon: Eye,
-      title: 'Investment Signals',
-      description: 'Get alerts when skins show rapid price changes. Never miss a profitable opportunity.',
-    },
-    {
-      icon: Zap,
-      title: 'Live Updates',
-      description: '24/7 real-time data updates. Always have the latest information at your fingertips.',
-    },
-    {
-      icon: Shield,
-      title: 'Accurate Data',
-      description: 'Reliable price data from multiple sources. Make decisions based on verified information.',
-    },
-    {
-      icon: Lock,
-      title: 'Portfolio Tracking',
-      description: 'Monitor your inventory value over time. See your profits and losses in real-time.',
+      icon: ExternalLink,
+      title: 'Direct Links',
+      description: 'Click through directly to Steam Market listings to make purchases instantly.',
     },
   ]
 
@@ -42,15 +32,15 @@ export default function Features() {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl md:text-5xl font-black mb-4">
-            Powerful <span className="text-white">Features</span>
+            How It <span className="text-white">Works</span>
           </h2>
           <p className="text-xl text-gray-400">
-            Everything you need to make smarter CS2 skin investment decisions.
+            Get accurate CS2 skin prices powered by Steam Market data.
           </p>
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => {
             const Icon = feature.icon
             return (
